@@ -101,7 +101,7 @@ A36 = "Los ángulos directores coordenados se pueden calcular como el arcocoseno
 A37 = "Para encontrar las componentes X y Y, primero proyecte el vector F en el plano XY y luego realice la proyección sobre cada uno de los ejes."
 A38 = "La componente Z se puede proyectar directamente con la información dada"
 A39 = "Determine el vector F como un vector cartesiano, esto le permitirá identificar cada una de sus componentes. Tenga en cuenta que el dibujo no está a escala."
-A40 = "La magnitud de un vector $\\overrightarrow{F}$ con 3 componentes (X, Y, Z) se define como: $\\sqrt{F_X^2 + F_Y^2 + F_Z^2}$"
+A40 = "La magnitud de un vector con 3 componentes (X, Y, Z) se define como: $\\sqrt{F_X^2 + F_Y^2 + F_Z^2}$"
 A41 = "Los ángulos directores relacionan directamente al vector F con cada uno de los ejes."
 A42 = "$i$ representa la componente paralela al eje X, $j$ a la componente paralela a Y y $k$ a la componente paralela a Z."
 A43 = "Calcule las componentes de cada eje como la multiplicación de la fuerza por el coseno del ángulo que forma con dicho eje."
@@ -150,7 +150,8 @@ A58 = "Compruebe que el vector unitario del eje equivale al coseno direccional e
 A59 = "Realice la sumatoria de fuerzas en X y Y. Determine el vector unitario de F1 y F2."
 A60 = "Calcule $\\overrightarrow{{u}}$ como un vector cartesiano. Para ello, calcule la diferencia de coordenadas en X, Y y Z."
 A61 = "Calcule $|\\overrightarrow{{u}}|$ como la magnitud del vector. La magnitud de un vector con 3 componentes (X, Y, Z) se define como: $\\sqrt{X^2 + Y^2 + Z^2}$"
-
+A62 = "Calcule las componentes X, Y, Z de la fuerza resultante como la suma de las componentes de cada una de las fuerzas."
+A63 = "Para hallar las componentes de cada una de las fuerzas, multiplique la magnitud de la fuerza por su vector unitario."
 
 #------------------------------------- Textos para las respuestas ---------------------------------------
 

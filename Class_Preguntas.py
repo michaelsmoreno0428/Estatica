@@ -2345,46 +2345,92 @@ preguntas = [
         calculos='operations'
         ),
 
-    Questionary(#4_1
+   
+Questionary(#4_1
         code = 13241,
         no_pregunta = 4,
         complexity = M,
         topic = EQ,
         subtopic = VU,
         version = 1,
-        pregunta = lambda f, a, calc, c, d, m: f"La componente en Y del vector unitario del cable AD es {calc['cos1']:.0f}. ¿Cuál es la distancia A_Z si $D_X={d[0]:0f}$ y $D_Y={d[3]:0f}?. Además, ¿cuál es la componente en Y de la fuerza, si la fuerza a lo largo del cable es {f[0]:.0f} kN$.",
+        pregunta = lambda f, a, calc, c, d, m: f"La componente en Y del vector unitario del cable AD, evaluado desde A hacia D, es {calc['cos1']:.0f}. ¿Cuál es la distancia A_Z si $D_X={d[0]:0f}$ y $D_Y={d[3]:0f}?. Además, ¿cuál es la componente en Y de la fuerza, si la fuerza a lo largo del cable es {f[0]:.0f} kN$.",
         no_answers = 2,
-        a1_name = Ci,
-        a2_name = Cj,
-        a3_name = Ck,
-        answer1=lambda f, a, calc, c, d, m: np.round(d[0]/Calculations.magnitude3D(d[0],d[3],d[6]),2),
-        answer2=lambda f, a, calc, c, d, m: np.round(d[3]/Calculations.magnitude3D(d[0],d[3],d[6]),2),
-        answer3=lambda f, a, calc, c, d, m: np.round(d[6]/Calculations.magnitude3D(d[0],d[3],d[6]),2),
-        ayuda1 = A57,
-        ayuda2 = A60,
-        ayuda3 = A61,
+        a1_name = "Distancia $A_Z$",
+        a2_name = "Componente en y ($F_y$)",
+        a3_name = "",
+        answer1=lambda f, a, calc, c, d, m: np.round(math.sqrt((d[3]/calc['cos1'])^2-d[0]^2-d[3]^2),2),
+        answer2=lambda f, a, calc, c, d, m: np.round(calc['cos1']*f[0],2),
+        answer3=lambda f, a, calc, c, d, m: 0,
+        ayuda1 = "Plantee la ecuación del vector unitario en y del cable AD.",
+        ayuda2 = "Despeje la distancia $A_Z$.",
+        ayuda3 = "Calcule la componente Y como la multiplicación de la fuerza por coseno direccional en y, es decir, la componente j del vector unitario.",
         respuesta_P1 = lambda f, a, calc, c, d, m: f"""
         A continuación se presenta la solución sugerida para el ejercicio:
 
-        $\\textbf{{\\small 1. Cálculo de la componente X $i$ del vector unitario:}}$
+        $\\textbf{{\\small 1. Despeje de la distancia $A_Z$:}}$
 
-        ${{\hspace{{4mm}} u_x = \\dfrac{{-D_X-0}}{{\\sqrt{{(-D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} }} }}$
-        ${{\hspace{{4mm}} u_x = {d[0]/Calculations.magnitude3D(d[0],d[3],d[6]):.0f}}}
+        Para despejar la distancia $A_Z$ se plantea la ecuación de la componente Y $j$ del vector unitario:
+
+        ${{\hspace{{4mm}} \\lambda_u_y = \\dfrac{{D_Y}}{{\\sqrt{{(D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} }} }}$
+        ${{\hspace{{4mm}} \\sqrt{{(D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} = \\dfrac{{D_Y}}{{\\lambda_u_y}} }}$
+        ${{\hspace{{4mm}} (D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2 = \\left(\\dfrac{{D_Y}}{{\\lambda_u_y}}\\right)^2 }}$
+        ${{\hspace{{4mm}} A_Z = \\sqrt{{\\left(\\dfrac{{D_Y}}{{\lambda_u_y}}\\right) - (D_X)^2 - (D_Y)^2}} }}$
+        ${{\hspace{{4mm}} A_Z = {calc['cos1']*f[0]:.2f}}}$
         
-        $\\textbf{{\\small 2. Cálculo de la componente Y $j$ del vector unitario:}}$
+        $\\textbf{{\\small 2. Cálculo de la componente Y $j$ de la fuerza que actúa en el cable AD:}}$
 
-        ${{\hspace{{4mm}} u_y = \\dfrac{{D_Y-0}}{{\\sqrt{{(-D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} }} }}$
-        ${{\hspace{{4mm}} u_y = {d[3]/Calculations.magnitude3D(d[0],d[3],d[6]):.0f}}}
-       
-        $\\textbf{{\\small 3. Cálculo de la componente Z $k$ del vector unitario:}}$
-
-        ${{\hspace{{4mm}} u_z = \\dfrac{{0-A_Z}}{{\\sqrt{{(-D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} }} }}$
-        ${{\hspace{{4mm}} u_z = {d[6]/Calculations.magnitude3D(d[0],d[3],d[6]):.0f} }}
-        
+        ${{\hspace{{4mm}} F_y = F*\\lambda_u_y }}$
+        ${{\hspace{{4mm}} u_y = {calc['cos1']*f[0]:.2f}}}        
         """,   
         respuesta_P2 = lambda f, a, calc, c, d, m: f"",
         respuesta_P3 = lambda f, a, calc, c, d, m: f"",
         calculos='operations'
+        ),
+
+    Questionary(#5_1 
+        code = 13251, 
+        no_pregunta = 5, 
+        complexity = M, 
+        topic = EQ, 
+        subtopic = VU, 
+        version = 1, 
+        pregunta = lambda f, a, calc, c, d, m: f"Halle el vector cartesiano de la fuerza resultante (FR) entre los vectores que inician en el origen:  $F1 = {f[0]:.0f} \\text{{ N}} localizado en {c[0]},{c[1]},{c[2]}$ y $F2 = {f[1]:.0f} \\text{{ N}} localizado en {c[3]},{c[4]},{c[5]}$.", 
+        no_answers = 3, 
+        a1_name = Ci, 
+        a2_name = Cj, 
+        a3_name = Ck, 
+        answer1=lambda f, a, calc, c, d, m: np.round((c[0]/Calculations.magnitude3D(c[0],c[1],c[2]))+(c[3]/Calculations.magnitude3D(c[3],c[4],c[5])), 2), 
+        answer2=lambda f, a, calc, c, d, m: np.round((c[1]/Calculations.magnitude3D(c[0],c[1],c[2]))+(c[4]/Calculations.magnitude3D(c[3],c[4],c[5])), 2), 
+        answer3=lambda f, a, calc, c, d, m: np.round((c[2]/Calculations.magnitude3D(c[0],c[1],c[2]))+(c[5]/Calculations.magnitude3D(c[3],c[4],c[5])), 2), 
+        ayuda1 = A62, 
+        ayuda2 = A63, 
+        ayuda3 = A57, 
+        respuesta_P1 = lambda f, a, calc, c, d, m: f"""
+        A continuación se presenta la solución sugerida para el ejercicio:
+
+        $\\textbf{{\\small 1. Cálculo del vector cartesiano de las fuerzas F1 y F2:}}$
+
+        $\\underline{{Vector cartesiano F1}}$ 
+
+        ${{\hspace{{4mm}} \\overrightarrow{{F1}} = \\dfrac{{(X_2-X_1) i + (Y_2-Y_1) j + (Z_2-Z_1) k}}{{\\sqrt{{(X_2-X_1)^2 + (Y_2-Y_1)^2 + (Z_2-Z_1)^2}} }} }}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F1}} = \\dfrac{{({c[0]:.0f}-0) i + ({c[1]:.0f}-0) j + ({c[2]:.0f}-0) k}}{{\\sqrt{{({c[0]:.0f}-0)^2 + ({c[1]:.0f}-0)^2 + ({c[2]:.0f}-0)^2}} }} }}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F1}} = {c[0]/Calculations.magnitude3D(c[0],c[1],c[2]):.2f} i + {c[1]/Calculations.magnitude3D(c[0],c[1],c[2]):.2f} j + {c[2]/Calculations.magnitude3D(c[0],c[1],c[2]):.2f} k}}$
+
+        $\\underline{{Vector cartesiano F2}}$ 
+
+        ${{\hspace{{4mm}} \\overrightarrow{{F2}} = \\dfrac{{(X_2-X_1) i + (Y_2-Y_1) j + (Z_2-Z_1) k}}{{\\sqrt{{(X_2-X_1)^2 + (Y_2-Y_1)^2 + (Z_2-Z_1)^2}} }} }}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F2}} = \\dfrac{{({c[3]:.0f}-0) i + ({c[4]:.0f}-0) j + ({c[5]:.0f}-0) k}}{{\\sqrt{{({c[3]:.0f}-0)^2 + ({c[4]:.0f}-0)^2 + ({c[5]:.0f}-0)^2}} }} }}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F2}} = {(c[3]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} i + {(c[4]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} j + {(c[5]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} k}}$
+
+        $\\textbf{{\\small 2. Cálculo del vector cartesiano de la fuerza resultante $F_R$:}}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F_R}} = F_R_X i + F_R_Y j + F_R_Z k}}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F_R}} = (F_1_X + F_2_X) i + (F_1_Y + F_2_Y) j + (F_1_Z + F_2_Z) k}}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F_R}} = ({c[0]/Calculations.magnitude3D(c[0],c[1],c[2]):.2f} + {(c[3]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f}) i + ({c[1]/Calculations.magnitude3D(c[0],c[1],c[2]):.2f} + {(c[4]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} ) j + ({c[2]/Calculations.magnitude3D(c[0],c[1],c[2]):.2f} + {(c[5]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f}) k}}$
+        ${{\hspace{{4mm}} \\overrightarrow{{F_R}} = {(c[0]/Calculations.magnitude3D(c[0],c[1],c[2]))+(c[3]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} i + {(c[1]/Calculations.magnitude3D(c[0],c[1],c[2]))+(c[4]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} j + {(c[2]/Calculations.magnitude3D(c[0],c[1],c[2]))+(c[5]/Calculations.magnitude3D(c[3],c[4],c[5])):.2f} k}}$
+        """, 
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"", 
+        respuesta_P3 = lambda f, a, calc, c, d, m: f"", 
+        calculos='operations' 
         ),
 
 
