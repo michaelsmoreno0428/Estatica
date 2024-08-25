@@ -36,7 +36,7 @@ def calcular_coordenadas():
         if coordenadas[0] < coordenadas[3] and coordenadas[1] < coordenadas[4] and coordenadas[2] < coordenadas[5]:
             return coordenadas
 
-def calcular_dimensiones(num_dimensiones = 12, rangos = None):
+def calcular_dimensiones(num_dimensiones = 28, rangos = None):
     values = [(1, 10), (-10, -1), (-10, 10)]
     
     dimensiones = []

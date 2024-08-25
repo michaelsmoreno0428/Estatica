@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import random as rd
 import math
-from Class_Preguntas_Backup import Questionary, preguntas
+from Class_Preguntas import Questionary, preguntas
 from Imagenes import *
 
 #=========================Configuration of the page============================

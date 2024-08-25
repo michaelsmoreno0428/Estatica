@@ -16,6 +16,7 @@ EQ = "Equilibrio de partículas"
 V2D = "Vectores 2D"
 V3D = "Vectores 3D"
 VU = "Vector unitario"
+E2D = "Equilibrio 2D"
 
 
 #------------------------- Nombres de las respuestas ----------------------------
@@ -151,7 +152,13 @@ A59 = "Realice la sumatoria de fuerzas en X y Y. Determine el vector unitario de
 A60 = "Calcule $\\overrightarrow{{u}}$ como un vector cartesiano. Para ello, calcule la diferencia de coordenadas en X, Y y Z."
 A61 = "Calcule $|\\overrightarrow{{u}}|$ como la magnitud del vector. La magnitud de un vector con 3 componentes (X, Y, Z) se define como: $\\sqrt{X^2 + Y^2 + Z^2}$"
 A62 = "Calcule las componentes X, Y, Z de la fuerza resultante como la suma de las componentes de cada una de las fuerzas."
-A63 = "Para hallar las componentes de cada una de las fuerzas, multiplique la magnitud de la fuerza por su vector unitario."
+A63 = "Halle las componentes de cada una de las fuerzas, para ello, multiplique la magnitud de la fuerza por su vector unitario."
+A64 = "Encuentre el vector unitario de los cables AB, AC y AD."
+A65 = "Plantee la ecuación de la componente $j$ del vector unitario del cable AD."
+A66 = "Calcule la componente Y de la fuerza como la multiplicación de la magnitud de la fuerza por el coseno direccional en $y$, es decir, la componente $j$ del vector unitario."
+A67 = "Plantee la ecuación de cada una de las componentes de la fuerza como la multiplicación de la magnitud de la fuerza y el vector unitario de dicha componente."
+A68 = "¿Qué representa la longitud de la cuerda?"
+A69 = "Despeje de cada una de las ecuaciones las distancias en X, Y y Z, según corresponda."
 
 #------------------------------------- Textos para las respuestas ---------------------------------------
 
