@@ -2,7 +2,10 @@
 image_paths=[]
 image_paths= [
 #Vectores 2D _ Cálculo de los ángulos _ Nivel fácil
-"D:/Estática/App/Imagenes/EQ/Fvec_0a.png", #[0] Pregunta < 2 _ 0 <alpha_x <= 90
+"https://github.com/lbtriana/Estatica/blob/main/Imagenes/EQ/Fvec_0a.png", #[0] Pregunta < 2 _ 0 <alpha_x <= 90
+#"C:\Users\Luisa\Videos\Estatica\Imagenes\Preguntas\EQ\Fvec_0a.png"
+#"C:\Users\Luisa\Videos\Estatica\Imagenes\EQ\Fvec_0a.png"
+#Imagenes/EQ/Fvec_0a.png
 "D:/Estática/App/Imagenes/EQ/Fvec_0b.png", #[1] Pregunta < 2 _ 90 <alpha_x <= 180
 "D:/Estática/App/Imagenes/EQ/Fvec_0c.png", #[2] Pregunta < 2 _ 180 <alpha_x <= 270
 "D:/Estática/App/Imagenes/EQ/Fvec_0d.png", #[3] Pregunta < 2 _ 270 <alpha_x <= 360

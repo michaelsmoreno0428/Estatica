@@ -2357,7 +2357,7 @@ preguntas = [
         a1_name = "Distancia $A_Z$",
         a2_name = "Componente en y ($F_y$)",
         a3_name = "",
-        answer1=lambda f, a, calc, c, d, m: np.round(math.sqrt((d[3]/calc['cos1'])^2-d[0]^2-d[3]^2),2),
+        answer1=lambda f, a, calc, c, d, m: np.round(math.sqrt((d[3]/calc['cos1'])**2-(d[0])**2-(d[3])**2),2),
         answer2=lambda f, a, calc, c, d, m: np.round(calc['cos1']*f[0],2),
         answer3=lambda f, a, calc, c, d, m: 0,
         ayuda1 = A65,
@@ -2374,7 +2374,7 @@ preguntas = [
         ${{\hspace{{4mm}} \\sqrt{{(D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} = \\dfrac{{D_Y}}{{\\lambda_u_y}} }}$
         ${{\hspace{{4mm}} (D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2 = \\left(\\dfrac{{D_Y}}{{\\lambda_u_y}}\\right)^2 }}$
         ${{\hspace{{4mm}} A_Z = \\sqrt{{\\left(\\dfrac{{D_Y}}{{\lambda_u_y}}\\right) - (D_X)^2 - (D_Y)^2}} }}$
-        ${{\hspace{{4mm}} A_Z = {calc['cos1']*f[0]:.2f}}}$
+        ${{\hspace{{4mm}} A_Z = {math.sqrt((d[3]/calc['cos1'])**2-(d[0])**2-(d[3])**2):.2f}}}$
         
         $\\textbf{{\\small 2. Cálculo de la componente Y $j$ de la fuerza que actúa en el cable AD:}}$
 

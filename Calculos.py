@@ -45,6 +45,11 @@ def calcular_dimensiones(num_dimensiones = 28, rangos = None):
         value = values[i % len(values)]
         dimension = rd.randint(value[0], value[1])
         dimensiones.append(dimension)
+    
+    if dimensiones[0] >= dimensiones[3]:
+        dimensiones[3] = rd.randint(values[0][0]+1, values[0][1])
+        dimensiones[0] = rd.randint(values[0][0], dimensiones[3] - 1)
+
     return dimensiones
 
 def calcular_momentos():
