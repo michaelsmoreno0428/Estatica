@@ -169,6 +169,7 @@ A74 = "Realice un corte en las cuerdas que sostiene la polea."
 A75 = "Plantee las ecuaciones de equilibrio y resuelva."
 A76 = "Realice el diagrama de cuerpo libre (DCL) de la polea."
 A77 = "Incluya dentro de la sumatoria las componentes de la fuerza que se debe aplicar y resuelva."
+A78 = "Dibuje el diagrama de cuerpo libre (DCL) de cada una de las poleas, identifique correctamente los cambios de cuerda entre las poleas."
 
 
 #------------------------------------- Textos para las respuestas ---------------------------------------
@@ -188,6 +189,12 @@ T2 = f"""
         $\\textbf{{\\small 1. Cálculo del ángulo $\\alpha_2$:}}$
 
         Primero, se aplica la regla del triángulo y se plantea mediante la ley de senos la ecuación para hallar F2:
+    """
+
+T3 = f"""
+        A continuación se presenta la solución sugerida para el ejercicio:
+
+        $\\textbf{{\\small 1. Diagrama de cuerpo libre de la polea:}}$
     """
 
 

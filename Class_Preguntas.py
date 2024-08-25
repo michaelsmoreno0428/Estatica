@@ -2765,7 +2765,7 @@ preguntas = [
         topic = EQ,
         subtopic = E2D,
         version = 1,
-        pregunta = lambda f, a, calc, c, d, m: f"Determine el valor de F para el siguiente sistema. Considere $W = {f[0]:.0f} N$ ",
+        pregunta = lambda f, a, calc, c, d, m: f"Determine el valor de F para el siguiente sistema. Considere $W = {f[0]:.0f} N$.",
         no_answers = 2,
         a1_name = "Fuerza F [N]",
         a2_name = "",
@@ -2776,11 +2776,7 @@ preguntas = [
         ayuda1 = A73,
         ayuda2 = A74,
         ayuda3 = A75,
-        respuesta_P1 = lambda f, a, calc, c, d, m: f"""
-        A continuación se presenta la solución sugerida para el ejercicio:
-
-        $\\textbf{{\\small 1. Diagrama de cuerpo libre de la polea:}}$
-        """,   
+        respuesta_P1 = lambda f, a, calc, c, d, m: T3,   
         respuesta_P2 = lambda f, a, calc, c, d, m: f"""
         $\\textbf{{\\small 2. Sumatoria de fuerzas en Y:}}$
 
@@ -2883,37 +2879,49 @@ Questionary(#1_1
         topic = EQ,
         subtopic = E2D,
         version = 1,
-        pregunta = lambda f, a, calc, c, d, m: f"Considere una partícula sobre la que actúan las fuerzas $F_1=[({c[0]:.0f}) i + ({c[1]:.0f}) j] N$ y $F_2=[({c[2]:.0f}) i + ({c[3]:.0f}) j] N$. Determine el vector cartesiano de la fuerza que debe aplicarse para que la partícula esté en equilibrio.",
+        pregunta = lambda f, a, calc, c, d, m: f"Determine el valor de F para el siguiente sistema. Considere $W = {f[0]:.0f} N$",
         no_answers = 2,
-        a1_name = Ci,
-        a2_name = Cj,
+        a1_name = "Fuerza F [N]",
+        a2_name = "",
         a3_name = "",
-        answer1=lambda f, a, calc, c, d, m: np.round(-(c[0]+c[2]),2),
-        answer2=lambda f, a, calc, c, d, m: np.round(-(c[1]+c[3]),2),
+        answer1=lambda f, a, calc, c, d, m: np.round(f[0]/8,2),
+        answer2=lambda f, a, calc, c, d, m: 0,
         answer3=lambda f, a, calc, c, d, m: 0,
-        ayuda1 = A71,
-        ayuda2 = A77,
-        ayuda3 = "",
-        respuesta_P1 = lambda f, a, calc, c, d, m:f"""
-        A continuación se presenta la solución sugerida para el ejercicio:
+        ayuda1 = A78,
+        ayuda2 = A74,
+        ayuda3 = A75,
+        respuesta_P1 = lambda f, a, calc, c, d, m:T3, 
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"""
+        $\\textbf{{\\small 2. Equilibrio en la polea 1:}}$
 
-        $\\textbf{{\\small 1. Sumatoria de fuerzas en X:}}$
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 2T_1 - W = 0}}$ 
+        ${{\hspace{{4mm}} 2T_1 = W}}$ 
+        ${{\hspace{{4mm}} T_1 = \\dfrac{{W}}{{2}}}}$ 
+        ${{\hspace{{4mm}} F = {f[0]/2:.2f}}} N$ 
 
-        ${{\hspace{{4mm}} \\sum{{F_x}} = 0}}$
-        ${{\hspace{{4mm}} \\sum{{F_x}} = F1_x + F2_x + F3_x}}$
-        ${{\hspace{{4mm}} F3_x = -F1_x - F2_x }}$
-        ${{\hspace{{4mm}} F3_x = {-(c[0]+c[2]):.2f}}} \\text{{N}}$  
-       
-        $\\textbf{{\\small 2. Sumatoria de fuerzas en Y:}}$
+        $\\textbf{{\\small 3. Equilibrio en la polea 2:}}$
 
-        ${{\hspace{{4mm}} \\sum{{F_y}} = 0}}$
-        ${{\hspace{{4mm}} \\sum{{F_y}} = F1_y + F2_y + F3_y}}$
-        ${{\hspace{{4mm}} F3_y = -F1_y - F2_y }}$
-        ${{\hspace{{4mm}} F3_x = {-(c[1]+c[3]):.2f}}} \\text{{N}}$
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 2T_2 - T_1 = 0}}$ 
+        ${{\hspace{{4mm}} 2T_2 = T_1}}$ 
+        ${{\hspace{{4mm}} T_2 = \\dfrac{{T_1}}{{2}}}}$ 
+        ${{\hspace{{4mm}} T_2 = \\dfrac{{W}}{{4}}}}$ 
+        ${{\hspace{{4mm}} F = {f[0]/4:.2f}}} N$ 
 
-        De acuerdo con lo anterior, el vector cartesiano de la fuerza que debe aplicar es ({-(c[0]+c[2]):.2f} i + {-(c[1]+c[3]):.2f} j) N.
-        """, 
-        respuesta_P2 = lambda f, a, calc, c, d, m: f"",
+        $\\textbf{{\\small 4. Equilibrio en la polea 3:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 2T_3 - T_2 = 0}}$ 
+        ${{\hspace{{4mm}} 2T_3 = T_2}}$ 
+        ${{\hspace{{4mm}} T_3 = \\dfrac{{T_2}}{{2}}}}$ 
+        ${{\hspace{{4mm}} T_3 = \\dfrac{{W}}{{8}}}}$ 
+        ${{\hspace{{4mm}} F = {f[0]/8:.2f}}} N$ 
+
+        $\\textbf{{\\small 5. Definición de la fuerza F:}}$
+
+        Dado que la cuerda en la que actúa la tensión $T_3$ es la misma en la que actúa F, la fuerza F es equivalente a $T_3$, es decir, {f[0]/8:.0f} N.
+        """,
         respuesta_P3 = lambda f, a, calc, c, d, m: f"",    
         calculos='operations'
         ),
