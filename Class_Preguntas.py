@@ -55,7 +55,6 @@ class Questionary:
         # If it's already a method, just call it
         elif callable(self.calculos):
             self.calculos = self.calculos()
-        # If it's already the result (a dictionary), leave it as is
 
         self.pregunta = self.pregunta_func(self.fuerzas, self.angulos, self.calculos, self.coordenadas, self.dimensiones, self.momentos)
         self.answer1 = self.answer1_func(self.fuerzas, self.angulos, self.calculos, self.coordenadas, self.dimensiones, self.momentos)
@@ -2352,29 +2351,31 @@ preguntas = [
         topic = EQ,
         subtopic = VU,
         version = 1,
-        pregunta = lambda f, a, calc, c, d, m: f"La componente en Y del vector unitario del cable AD, evaluado desde A hacia D, es {calc['cos1']:.0f}. ¿Cuál es la distancia A_Z si $D_X={d[0]:0f}$ y $D_Y={d[3]:0f}?. Además, ¿cuál es la componente en Y de la fuerza, si la fuerza a lo largo del cable es {f[0]:.0f} kN$.",
+        pregunta = lambda f, a, calc, c, d, m: f"La componente en Y del vector unitario del cable AD, evaluado desde A hacia D, es {calc['cos1']:.0f}. ¿Cuál es la distancia D_Y si $D_X={d[0]:0f}$ y $A_Z={d[3]:0f}?. Además, ¿cuál es la componente en Y de la fuerza, si la fuerza a lo largo del cable es {f[0]:.0f} kN$.",
         no_answers = 2,
-        a1_name = "Distancia $A_Z$",
+        a1_name = "Distancia $D_Y$",
         a2_name = "Componente en y ($F_y$)",
         a3_name = "",
-        answer1=lambda f, a, calc, c, d, m: np.round(math.sqrt((d[3]/calc['cos1'])**2-(d[0])**2-(d[3])**2),2),
+        answer1=lambda f, a, calc, c, d, m: np.round(math.sqrt((d[0]**2+d[3]**2)/((1/(calc['cos1'])**2)-1)),2),
         answer2=lambda f, a, calc, c, d, m: np.round(calc['cos1']*f[0],2),
         answer3=lambda f, a, calc, c, d, m: 0,
         ayuda1 = A65,
-        ayuda2 = "Despeje la distancia $A_Z$.",
+        ayuda2 = "Despeje la distancia $D_Y$.",
         ayuda3 = A66,
         respuesta_P1 = lambda f, a, calc, c, d, m: f"""
         A continuación se presenta la solución sugerida para el ejercicio:
 
-        $\\textbf{{\\small 1. Despeje de la distancia $A_Z$:}}$
+        $\\textbf{{\\small 1. Despeje de la distancia $D_Y$:}}$
 
-        Para despejar la distancia $A_Z$ se plantea la ecuación de la componente Y $j$ del vector unitario:
+        Para despejar la distancia $D_Y$ se plantea la ecuación de la componente Y $j$ del vector unitario:
 
         ${{\hspace{{4mm}} \\lambda_u_y = \\dfrac{{D_Y}}{{\\sqrt{{(D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} }} }}$
         ${{\hspace{{4mm}} \\sqrt{{(D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2}} = \\dfrac{{D_Y}}{{\\lambda_u_y}} }}$
         ${{\hspace{{4mm}} (D_X-0)^2 + (D_Y-0)^2 + (0-A_Z)^2 = \\left(\\dfrac{{D_Y}}{{\\lambda_u_y}}\\right)^2 }}$
-        ${{\hspace{{4mm}} A_Z = \\sqrt{{\\left(\\dfrac{{D_Y}}{{\lambda_u_y}}\\right) - (D_X)^2 - (D_Y)^2}} }}$
-        ${{\hspace{{4mm}} A_Z = {math.sqrt((d[3]/calc['cos1'])**2-(d[0])**2-(d[3])**2):.2f}}}$
+        ${{\hspace{{4mm}} (D_X-0)^2 + (0-A_Z)^2 = \\left(\\dfrac{{D_Y}}{{\\lambda_u_y}}\\right)^2 - (D_Y-0)^2}}$
+        ${{\hspace{{4mm}} (D_X-0)^2 + (0-A_Z)^2 = (D_Y-0)^2*\\left(\\dfrac{{1}}{{(\\lambda_u_y)^2}}-1\\right)}}$
+        ${{\hspace{{4mm}} D_Y = \\sqrt{{\\left(\\dfrac{{D_X^2+A_Z^2}}{{\\left(\\dfrac{{1}}{{(\\lambda_u_y)^2}}-1}}\\right)}} }}$
+        ${{\hspace{{4mm}} D_Y = {math.sqrt((d[0]**2+d[3]**2)/((1/(calc['cos1'])**2)-1)):.2f}}}$
         
         $\\textbf{{\\small 2. Cálculo de la componente Y $j$ de la fuerza que actúa en el cable AD:}}$
 

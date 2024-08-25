@@ -11,7 +11,7 @@ from Imagenes import *
 st.set_page_config(layout="wide") #centered
 
 #Creation of the sidebar
-st.sidebar.title("Aprende Estática")
+st.sidebar.markdown("<h1 style='font-size:36px;'>StaticGenius</h1>", unsafe_allow_html=True)
 way=st.sidebar.radio("Seleccione su método de estudio",options=["Práctica","Teoría"])
 respuesta_usuario = {}
 if way=="Teoría":
@@ -21,28 +21,30 @@ else:
     complexity=st.sidebar.radio("Nivel de dificultad",options=["Fácil","Medio","Díficil"]) 
     respuesta_usuario['complexity'] = complexity
     
-    topic=st.sidebar.selectbox("Seleccione el tema", options=["Equilibrio de partículas","Momento","Incertidumbre","Sistemas equivalentes","Apoyos y reacciones","Armaduras","Centroides","Fuerzas distribuidas","Fuerzas internas"])
+    topic=st.sidebar.selectbox("Seleccione el tema", options=["Equilibrio de partículas"])
+    #topic=st.sidebar.selectbox("Seleccione el tema", options=["Equilibrio de partículas","Momento","Incertidumbre","Sistemas equivalentes","Apoyos y reacciones","Armaduras","Centroides","Fuerzas distribuidas","Fuerzas internas"])
     respuesta_usuario['topic'] = topic
     
     if topic=="Equilibrio de partículas":
         subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Vectores 2D","Vectores 3D","Vector unitario","Equilibrio 2D","Equilibrio 3D"])
-    elif topic=="Momento":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Momento en un punto 2D","Momento en un punto 3D","Momento alrededor de un eje","Momentos pares"])
-    elif topic=="Incertidumbre":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Equilibrio de partículas","Momento","Apoyos y reacciones","Armaduras","Centroides","Fuerzas distribuidas","Fuerzas internas"])
-    elif topic=="Sistemas equivalentes":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Sistemas equivalentes 2D","Sistemas equivalentes 3D"])
-    elif topic=="Apoyos y reacciones":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Apoyos","Reacciones"])
-    elif topic=="Armaduras":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Cerchas: Método de los nodos","Cerchas: Elementos de fuerza cero","Cerchas: Método de las secciones","Marcos"])
-    elif topic=="Centroides":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Centroides","Centro de gravedad","Centro de masa"])
-    elif topic=="Fuerzas distribuidas":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Vigas","Presión hidrostática","Empuje de suelo"])
-    elif topic=="Fuerzas internas":
-        subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Fuerzas internas en un punto","Diagramas: Método analítico","Diagramas: Método simplificado"])
+    #elif topic=="Momento":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Momento en un punto 2D","Momento en un punto 3D","Momento alrededor de un eje","Momentos pares"])
+    #elif topic=="Incertidumbre":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Equilibrio de partículas","Momento","Apoyos y reacciones","Armaduras","Centroides","Fuerzas distribuidas","Fuerzas internas"])
+    #elif topic=="Sistemas equivalentes":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Sistemas equivalentes 2D","Sistemas equivalentes 3D"])
+    #elif topic=="Apoyos y reacciones":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Apoyos","Reacciones"])
+    #elif topic=="Armaduras":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Cerchas: Método de los nodos","Cerchas: Elementos de fuerza cero","Cerchas: Método de las secciones","Marcos"])
+    #elif topic=="Centroides":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Centroides","Centro de gravedad","Centro de masa"])
+    #elif topic=="Fuerzas distribuidas":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Vigas","Presión hidrostática","Empuje de suelo"])
+    #elif topic=="Fuerzas internas":
+    #    subtopic=st.sidebar.selectbox("Seleccione el subtema", options=["Fuerzas internas en un punto","Diagramas: Método analítico","Diagramas: Método simplificado"])
 
+#Storage the user's selection
     respuesta_usuario['subtopic'] = subtopic
 complexity_user=respuesta_usuario['complexity']
 topic_user=respuesta_usuario['topic']
@@ -121,7 +123,7 @@ def resultado(preguntas_filtradas, response1, response2, response3,pregunta_actu
     
     return outxt, cont
 
-#Function to generate the image according to question and version number
+#Function to Generate the Question Image 
 def filtrar_imagenes_preguntas(pregunta_no,version_no, subtopic, difficulty):
     left_col, center_col, right_col = st.columns(3)
     #with left_col:
@@ -200,6 +202,7 @@ def filtrar_imagenes_preguntas(pregunta_no,version_no, subtopic, difficulty):
                     
     return
 
+#Function to Generate the Answer Image 
 def filtrar_imagenes_respuestas_P1(pregunta_no,version_no, subtopic, difficulty):
     left_col, center_col, right_col = st.columns(3)
 
@@ -225,13 +228,17 @@ def filtrar_imagenes_respuestas_P1(pregunta_no,version_no, subtopic, difficulty)
 #Function to create "Ayuda" button, it shows the helps sequentially
 def butt_ayuda(preguntas_filtradas, pregunta_actual,ayuda_clicked):
         ayudas = [preguntas_filtradas[st.session_state.pregunta_actual].ayuda1, preguntas_filtradas[st.session_state.pregunta_actual].ayuda2, preguntas_filtradas[st.session_state.pregunta_actual].ayuda3]
+        
+        ayudas_no_vacias = [ayuda for ayuda in ayudas if ayuda.strip() != ""]
         if 'ayuda_index' not in st.session_state:
             st.session_state.ayuda_index = 0 
         if ayuda_clicked:
-            help_text_placeholder = st.empty() 
-            help_text_placeholder.write(ayudas[st.session_state.ayuda_index])
-            st.session_state.ayuda_index = (st.session_state.ayuda_index + 1) %3
-    
+            if ayudas_no_vacias:
+                help_text_placeholder = st.empty() 
+                help_text_placeholder.write(ayudas[st.session_state.ayuda_index])
+                st.session_state.ayuda_index = (st.session_state.ayuda_index + 1) %len(ayudas_no_vacias)
+
+# Function to Generate a New Version of the Question  
 def nueva_version_callback():
     no_pregunta_actual = preguntas_filtradas[st.session_state.pregunta_actual].no_pregunta
     preguntas_actuales = [pregunta for pregunta in preguntas_filtradas if pregunta.no_pregunta == no_pregunta_actual]
@@ -240,6 +247,7 @@ def nueva_version_callback():
     if len(versiones) == 1:
         misma_pregunta = preguntas_filtradas[st.session_state.pregunta_actual]
         misma_pregunta.regenerate_values()
+        st.session_state.Intento = 0
     else:
         indice_version_actual = versiones.index(st.session_state.version_actual)
         siguiente_version = (indice_version_actual + 1) % len(versiones)
@@ -248,8 +256,10 @@ def nueva_version_callback():
         for i, pregunta in enumerate(preguntas_filtradas):
             if pregunta.no_pregunta == no_pregunta_actual and pregunta.version == st.session_state.version_actual:
                 st.session_state.pregunta_actual = i
+                st.session_state.Intento = 0
                 break
-
+                
+# Function to Generate a New Problem
 def nuevo_problema_callback():
     nuevo_problema = st.session_state.pregunta_actual + 1
     while nuevo_problema < len(preguntas_filtradas) and preguntas_filtradas[nuevo_problema].no_pregunta == preguntas_filtradas[st.session_state.pregunta_actual].no_pregunta:
@@ -257,16 +267,31 @@ def nuevo_problema_callback():
     if nuevo_problema >= len(preguntas_filtradas):
         nuevo_problema = 0
     st.session_state.pregunta_actual = nuevo_problema
-    st.session_state.version_actual = 1
+    st.session_state.version_actual = 1 
+    st.session_state.Intento = 0
 
-
+#Initialize the "Intento" Variable to Count the Number of User's Attempts to Verify Their Answer
+if 'Intento' not in st.session_state:
+    st.session_state.Intento = 0
+#Initialize the State for the "mostrar_respuesta" Function When the User Verifies Their Answer
+if 'mostrar_respuesta' not in st.session_state:
+    st.session_state.mostrar_respuesta = False
 #Initialize the questions to show
 if 'pregunta_actual' not in st.session_state:
     st.session_state.pregunta_actual = 0 
-
 #Initialize the version of the question to show    
 if 'version_actual' not in st.session_state:    
     st.session_state.version_actual = 1
+
+#Function to Display the Answer Explanation
+def mostrar_respuesta():
+    st.write(preguntas_filtradas[st.session_state.pregunta_actual].respuesta_P1)
+    filtrar_imagenes_respuestas_P1(preguntas_filtradas[st.session_state.pregunta_actual].no_pregunta, preguntas_filtradas[st.session_state.pregunta_actual].version, preguntas_filtradas[st.session_state.pregunta_actual].subtopic, preguntas_filtradas[st.session_state.pregunta_actual].complexity)
+    st.write(preguntas_filtradas[st.session_state.pregunta_actual].respuesta_P2) 
+
+#Function to display the Answer Explanation for the "Quiero ver la respuesta" button
+def on_button_click():
+    st.session_state.mostrar_respuesta = True
 
 #Function to generate the questions
 def generate_questions():
@@ -291,24 +316,31 @@ def generate_questions():
 
     return response1, response2, response3, respuesta_clicked, ayuda_clicked
 
+#Function main
 def main():
     
     response1, response2, response3, respuesta_clicked, ayuda_clicked = generate_questions()
 
     # "Verificar respuesta" button - Evaluation of the validity of the result input by user
     if respuesta_clicked:
+        st.session_state.Intento +=1
         outputx, is_correct = resultado(preguntas_filtradas, response1, response2, response3, st.session_state.pregunta_actual)
         st.write(outputx)
         if is_correct == 1:
-            st.write(preguntas_filtradas[st.session_state.pregunta_actual].respuesta_P1)
-            filtrar_imagenes_respuestas_P1(preguntas_filtradas[st.session_state.pregunta_actual].no_pregunta, preguntas_filtradas[st.session_state.pregunta_actual].version, preguntas_filtradas[st.session_state.pregunta_actual].subtopic, preguntas_filtradas[st.session_state.pregunta_actual].complexity)
-            st.write(preguntas_filtradas[st.session_state.pregunta_actual].respuesta_P2)
-
-    if ayuda_clicked:
-    # "Ayuda" button - It shows helps     
+            st.session_state.mostrar_respuesta = True
+            mostrar_respuesta()
+        elif is_correct == 0:
+            #st.write(f"Intentos: {st.session_state.Intento}") #Display the number of Attempts
+            if st.session_state.Intento >3:
+                st.button(":pensive: Quiero ver la respuesta",key=f"ver_respuesta_button{st.session_state.pregunta_actual}", help="Permite ver la respuesta", on_click = on_button_click)
+    
+    if st.session_state.mostrar_respuesta:
+        mostrar_respuesta()
+        st.session_state.mostrar_respuesta = False
+                
+    # "Ayuda" button - It shows helps 
+    if ayuda_clicked:    
         butt_ayuda(preguntas_filtradas,st.session_state.pregunta_actual,ayuda_clicked)
-
-  
 
 if __name__ == '__main__':
     main()
