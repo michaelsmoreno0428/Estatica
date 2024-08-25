@@ -2641,52 +2641,281 @@ preguntas = [
     #-------------------------------------------------       Code: 141##      ---------------------------------------------------
 
     Questionary(#1_1
-        code = 14311,
+        code = 14111,
         no_pregunta = 1,
         complexity = F,
         topic = EQ,
         subtopic = E2D,
         version = 1,
-        pregunta = lambda f, a, calc, c, d, m: f"Calcule las magnitudes de las fuerzas F1 y F2 para que la partícula esté en equilibrio. Considere $F3 = {f[0]:.0f} \\text{{kN}}$, $\\alpha_1={a[0]:.0f}$ y $\\alpha_2={a[4]:.0f}$.",
+        pregunta = lambda f, a, calc, c, d, m: f"Determine las magnitudes de las fuerzas F1 y F2 para que la partícula esté en equilibrio. Considere $F3 = {f[0]:.0f} \\text{{kN}}$, $\\alpha_1={a[0]:.0f}$ y $\\alpha_2={a[4]:.0f}$.",
         no_answers = 2,
         a1_name = "Magnitud F1 [kN]",
         a2_name = "Magnitud F2 [kN]",
         a3_name = "",
-        answer1 = lambda f, a, calc, c, d, m: np.round(f[0]*d[3]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[9]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[15]/Calculations.magnitude3D(d[15],d[18],d[0]),2),
-        answer2 = lambda f, a, calc, c, d, m: np.round(f[0]*d[6]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[12]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[18]/Calculations.magnitude3D(d[15],d[18],d[0]),2),
-        answer3 = lambda f, a, calc, c, d, m: np.round(f[0]*d[0]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[0]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[0]/Calculations.magnitude3D(d[15],d[18],d[0]),2),
-        ayuda1 = A64,
-        ayuda2 = A62,
-        ayuda3 = A63,
+        answer1 = lambda f, a, calc, c, d, m: np.round(((-(f[0]*calc['tan5']/(calc['sin1']+calc['cos1']*calc['tan5']))*calc['cos1']+f[0])/calc['cos5']),2),
+        answer2 = lambda f, a, calc, c, d, m: np.round((f[0]*calc['tan5']/(calc['sin1']+calc['cos1']*calc['tan5'])),2),
+        answer3 = lambda f, a, calc, c, d, m: 0,
+        ayuda1 = A70,
+        ayuda2 = A71,
+        ayuda3 = A72,
         respuesta_P1 = lambda f, a, calc, c, d, m: f"""
-        Para hallar el vector cartesiano de la fuerza resultante ($F_R$), se realiza la sumatoria de las fuerzas en X, Y, Z, para lo cual se usa el vector unitario de cada uno de los cables.
+         Se sugiere para la solución del ejercicio el siguiente método:
 
-        $\\textbf{{\\small 1. Cálculo del vector unitario de los cables AB, AC y AD (Evaluados desde A a los puntos B, C, D):}}$
+        $\\textbf{{\\small 1. Sumatoria de fuerzas en X y Y:}}$
 
-        ${{\hspace{{4mm}} \\Lambda_{{AB}} = \\dfrac{{\\overrightarrow{{AB}}}}{{|\\overrightarrow{{AB}}|}} = \\dfrac{{(B_X-0) i + (-B_Y-0) j + (0 - A_Z) k}}{{\\sqrt((B_X-0)^2 + (-B_Y-0)^2 + (0 - A_Z)^2}} }}$
-        ${{\hspace{{4mm}} \\Lambda_{{AC}} = \\dfrac{{\\overrightarrow{{AC}}}}{{|\\overrightarrow{{AC}}|}} = \\dfrac{{(C_X-0) i + (C_Y-0) j + (0 - A_Z) k}}{{\\sqrt((C_X-0)^2 + (C_Y-0)^2 + (0 - A_Z)^2}} }}$
-        ${{\hspace{{4mm}} \\Lambda_{{AD}} = \\dfrac{{\\overrightarrow{{AD}}}}{{|\\overrightarrow{{AD}}|}} = \\dfrac{{(-D_X-0) i + (D_Y-0) j + (0 - A_Z) k}}{{\\sqrt((-D_X-0)^2 + (D_Y-0)^2 + (0 - A_Z)^2}} }}$
-    
-        
-        $\\textbf{{\\small 2. Sumatoria de fuerzas en X, Y, Z:}}$
+        $\\underline{{Ecuación 1}}$  
 
-        ${{\hspace{{4mm}} \\sum_X = F_R_X = F_{{AB}}*\\left(\\dfrac{{B_X}}{{\\sqrt((B_X)^2 + (-B_Y)^2 + (-A_Z)^2}}\\right) + F_{{AC}}*\\left(\\dfrac{{C_X}}{{\\sqrt((C_X)^2 + (C_Y)^2 + (-A_Z)^2}}\\right) + F_{{AD}}*\\left(\\dfrac{{-D_X}}{{\\sqrt((-D_X)^2 + (D_Y)^2 + (-A_Z)^2}}\\right)}}$
-        ${{\hspace{{4mm}} \\sum_X = F_R_X = {f[0]*d[3]/Calculations.magnitude3D(d[3],d[6],d[0]):.2f} + {f[1]*d[9]/Calculations.magnitude3D(d[9],d[12],d[0]):.2f} + {f[2]*d[15]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f}}}$
-        ${{\hspace{{4mm}} \\sum_X = F_R_X = {f[0]*d[3]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[9]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[15]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f} }}$
+        ${{\hspace{{4mm}} \\sum{{F_x}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_x}} = F1_x + F2_x + F3= -F1*cos(\\alpha_2) - F2*cos(\\alpha_1) +F3 = 0}}$
+
+        $\\underline{{Ecuación 2}}$  
+
+        ${{\hspace{{4mm}} \\sum{{F_x}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = F1_y + F2_y = F1*sen(\\alpha_2)-F2*sen(\\alpha_1) = 0}}$
         
-        ${{\hspace{{4mm}} \\sum_Y = F_R_Y = F_{{AB}}*\\left(\\dfrac{{-B_Y}}{{\\sqrt((B_X)^2 + (-B_Y)^2 + (-A_Z)^2}}\\right) + F_{{AC}}*\\left(\\dfrac{{C_Y}}{{\\sqrt((C_X)^2 + (C_Y)^2 + (-A_Z)^2}}\\right) + F_{{AD}}*\\left(\\dfrac{{D_Y}}{{\\sqrt((-D_X)^2 + (D_Y)^2 + (-A_Z)^2}}\\right)}}$
-        ${{\hspace{{4mm}} \\sum_Y = F_R_Y = {f[0]*d[6]/Calculations.magnitude3D(d[3],d[6],d[0]):.2f} + {f[1]*d[12]/Calculations.magnitude3D(d[9],d[12],d[0]):.2f} + {f[2]*d[18]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f}}}
-        ${{\hspace{{4mm}} \\sum_Y = F_R_Y = {f[0]*d[6]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[12]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[18]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f}}}$
+
+        $\\textbf{{\\small 2. Despejar las magnitudes:}}$
+
+        Para simplificar el proceso de despeje, se busca formar una tangente. Al hacer esto, se reduce el número de términos en las ecuaciones. Dado lo anteior, se despeja F1 de la Ecuación 1 y se reemplaza en la Ecuación 2 para despejar F2. Con el valor de F2 obtenido, se halla F1.
+
+        De la ecuación 1 se despeja F1:  
+
+        ${{\hspace{{4mm}} F1 = \\dfrac{{-F2*cos(\\alpha_1)+F3}}{{cos(\\alpha_2)}}}}$
+
+        Se reemplaza F1 en la ecuación 2:
+
+        ${{\hspace{{4mm}} \\left(\\dfrac{{-F2*cos(\\alpha_1)+F3}}{{cos(\\alpha_2)}}\\right)*sen(\\alpha_2)-F2*sen(\\alpha_1) = 0}}$
+        ${{\hspace{{4mm}} -F2*cos(\\alpha_1)*tan(\\alpha_2) + F3*tan(\\alpha_2) - F2*sen(\\alpha_1) = 0}}$
+        ${{\hspace{{4mm}} F3*tan(\\alpha_2) = F2*sen(\\alpha_1) + F2*cos(\\alpha_1)*tan(\\alpha_2)}}$
+        ${{\hspace{{4mm}} F3*tan(\\alpha_2) = F2(sen(\\alpha_1) + cos(\\alpha_1)*tan(\\alpha_2))}}$  
+        ${{\hspace{{4mm}} F2 = \\dfrac{{F3*tan(\\alpha_2)}}{{sen(\\alpha_1) + cos(\\alpha_1)*tan(\\alpha_2)}}}}$ 
+        ${{\hspace{{4mm}} F2 = {(f[0]*calc['tan5']/(calc['sin1']+calc['cos1']*calc['tan5'])):.2f}}} \\text{{kN}}$
+
+        Con el valor de F2 se calcula F1:  
+        ${{\hspace{{4mm}} F1 = {((-(f[0]*calc['tan5']/(calc['sin1']+calc['cos1']*calc['tan5']))*calc['cos1']+f[0])/calc['cos5']):.2f}}} \\text{{kN}}$
+        """,   
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"",
+        respuesta_P3 = lambda f, a, calc, c, d, m: f"",
+        calculos='operations'
+        ), 
+
+    Questionary(#2_1
+        code = 14121,
+        no_pregunta = 2,
+        complexity = F,
+        topic = EQ,
+        subtopic = E2D,
+        version = 1,
+        pregunta = lambda f, a, calc, c, d, m: f"Determine las magnitudes de la F1 y el ángulo $\\alpha_2$ para que la partícula esté en equilibrio. Considere $F2 = {f[0]:.0f} \\text{{kN}}$, $F3 = {f[1]:.0f} \\text{{kN}}$ y $\\alpha_1={a[0]:.0f}$.",
+        no_answers = 2,
+        a1_name = "Magnitud F1 [kN]",
+        a2_name = "Ángulo $\\alpha_2$",
+        a3_name = "",
+        answer1 = lambda f, a, calc, c, d, m: np.round((-f[0]*calc['cos1']+f[1])/Calculations.cosine(Calculations.define_angle((f[0]*calc['sin1']),(-f[0]*calc['cos1']+f[1]))),2),
+        answer2 = lambda f, a, calc, c, d, m: np.round((Calculations.define_angle((f[0]*calc['sin1']),(-f[0]*calc['cos1']+f[1]))),2),
+        answer3 = lambda f, a, calc, c, d, m: 0,
+        ayuda1 = A70,
+        ayuda2 = A71,
+        ayuda3 = A72,
+        respuesta_P1 = lambda f, a, calc, c, d, m: f"""
+        Se sugiere para la solución del ejercicio el siguiente método:
+
+        $\\textbf{{\\small 1. Sumatoria de fuerzas en X y Y:}}$
+
+        $\\underline{{Ecuación 1}}$  
+
+        ${{\hspace{{4mm}} \\sum{{F_x}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_x}} = F1_x + F2_x + F3= -F1*cos(\\alpha_2) - F2*cos(\\alpha_1) +F3 = 0}}$
+
+        $\\underline{{Ecuación 2}}$  
+
+        ${{\hspace{{4mm}} \\sum{{F_x}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = F1_y + F2_y = F1*sen(\\alpha_2)-F2*sen(\\alpha_1) = 0}}$
         
-        ${{\hspace{{4mm}} \\sum_Z = F_R_Z = F_{{AB}}*\\left(\\dfrac{{-A_Z}}{{\\sqrt((B_X)^2 + (-B_Y)^2 + (-A_Z)^2}}\\right) + F_{{AC}}*\\left(\\dfrac{{-A_Z}}{{\\sqrt((C_X)^2 + (C_Y)^2 + (-A_Z)^2}}\\right) + F_{{AD}}*\\left(\\dfrac{{-A_Z}}{{\\sqrt((-D_X)^2 + (D_Y)^2 + (-A_Z)^2}}\\right)}}$
-        ${{\hspace{{4mm}} \\sum_Z = F_R_Z = {f[0]*d[0]/Calculations.magnitude3D(d[3],d[6],d[0]):.2f} + {f[1]*d[0]/Calculations.magnitude3D(d[9],d[12],d[0]):.2f} + {f[2]*d[0]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f}}}
-        ${{\hspace{{4mm}} \\sum_Z = F_R_Z ={f[0]*d[0]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[0]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[0]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f}}}
-        
-        De acuerdo con el anterior procedimiento el vector cartesiano de la fuerza resultante ($F_R$) es: {f[0]*d[3]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[9]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[15]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f} i + {f[0]*d[6]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[12]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[18]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f} j + {f[0]*d[0]/Calculations.magnitude3D(d[3],d[6],d[0])+f[1]*d[0]/Calculations.magnitude3D(d[9],d[12],d[0])+f[2]*d[0]/Calculations.magnitude3D(d[15],d[18],d[0]):.2f} k. 
+
+        $\\textbf{{\\small 2. Despeje de la magnitud de F1 y el ángulo $\\alpha_2$:}}$
+
+        Para simplificar el proceso de despeje, se busca formar una tangente. Al hacer esto, se reduce el número de términos en las ecuaciones. Dado lo anteior, se despeja F1 de la Ecuación 1 y se reemplaza en la Ecuación 2 para despejar el ángulo $\\alpha_2$. Con el valor de $\\alpha_2$ obtenido, se halla F1.
+
+        De la ecuación 1 se despeja F1:  
+
+        ${{\hspace{{4mm}} F1 = \\dfrac{{-F2*cos(\\alpha_1)+F3}}{{cos(\\alpha_2)}}}}$
+
+        Se reemplaza F1 en la ecuación 2:
+
+        ${{\hspace{{4mm}} \\left(\\dfrac{{-F2*cos(\\alpha_1)+F3}}{{cos(\\alpha_2)}}\\right)*sen(\\alpha_2)-F2*sen(\\alpha_1) = 0}}$
+        ${{\hspace{{4mm}} -F2*cos(\\alpha_1)*tan(\\alpha_2) + F3*tan(\\alpha_2) - F2*sen(\\alpha_1) = 0}}$
+        ${{\hspace{{4mm}} tan(\\alpha_2)(-F2*cos(\\alpha_1) + F3) = F2*sen(\\alpha_1)}}$
+        ${{\hspace{{4mm}} tan(\\alpha_2) = \\dfrac{{F2*sen(\\alpha_1)}}{{-F2*cos(\\alpha_1) + F3}}}}$
+        ${{\hspace{{4mm}} \\alpha_2 = tan^{{-1}}\\left(\\dfrac{{F2*sen(\\alpha_1)}}{{-F2*cos(\\alpha_1) + F3}}\\right)}}$
+        ${{\hspace{{4mm}} \\alpha_2 = {Calculations.define_angle((f[0]*calc['sin1']),(-f[0]*calc['cos1']+f[1])):.2f}}}$
+
+        Con el valor de F2 se calcula F1:  
+        ${{\hspace{{4mm}} F1 = {(-f[0]*calc['cos1']+f[1])/Calculations.cosine(Calculations.define_angle((f[0]*calc['sin1']),(-f[0]*calc['cos1']+f[1]))):.2f}}} \\text{{kN}}$
         """,   
         respuesta_P2 = lambda f, a, calc, c, d, m: f"",
         respuesta_P3 = lambda f, a, calc, c, d, m: f"",
         calculos='operations'
         ),  
+
+    Questionary(#3_1
+        code = 14131,
+        no_pregunta = 3,
+        complexity = F,
+        topic = EQ,
+        subtopic = E2D,
+        version = 1,
+        pregunta = lambda f, a, calc, c, d, m: f"Determine el valor de F para el siguiente sistema. Considere $W = {f[0]:.0f} N$ ",
+        no_answers = 2,
+        a1_name = "Fuerza F [N]",
+        a2_name = "",
+        a3_name = "",
+        answer1 = lambda f, a, calc, c, d, m: np.round(f[0]/2,2),
+        answer2 = lambda f, a, calc, c, d, m: 0,
+        answer3 = lambda f, a, calc, c, d, m: 0,
+        ayuda1 = A73,
+        ayuda2 = A74,
+        ayuda3 = A75,
+        respuesta_P1 = lambda f, a, calc, c, d, m: f"""
+        A continuación se presenta la solución sugerida para el ejercicio:
+
+        $\\textbf{{\\small 1. Diagrama de cuerpo libre de la polea:}}$
+        """,   
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"""
+        $\\textbf{{\\small 2. Sumatoria de fuerzas en Y:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = W - 2F = 0}}$ 
+        ${{\hspace{{4mm}} 2F = W}}$ 
+        ${{\hspace{{4mm}} F = \\dfrac{{W}}{{2}}}}$ 
+        ${{\hspace{{4mm}} F = {f[0]/2:.2f}}} N$ 
+        """,
+        respuesta_P3 = lambda f, a, calc, c, d, m: f"",
+        calculos='operations'
+        ), 
+
+    Questionary(#4_1
+        code = 14141,
+        no_pregunta = 4,
+        complexity = F,
+        topic = EQ,
+        subtopic = E2D,
+        version = 1,
+        pregunta = lambda f, a, calc, c, d, m: f"¿Cuál es la fuerza de fricción necesaria para evitar que el bloque de peso $W={f[0]:.2f}$ N se desplace a lo largo del plano inclinado a {a[0]:.0f}° de la horizontal.",
+        no_answers = 2,
+        a1_name = "Fuerza de fricción ($f_r$) [N]",
+        a2_name = "",
+        a3_name = "",
+        answer1 = lambda f, a, calc, c, d, m: np.round(f[0]*calc['sin1'],2),
+        answer2 = lambda f, a, calc, c, d, m: 0,
+        answer3 = lambda f, a, calc, c, d, m: 0,
+        ayuda1 = "Defina un sistema de coordenadas arbitrario, donde el eje X' sea paralelo al plano inclinado y el eje Y' esté a 90° con respecto a la superficie del plano.",
+        ayuda2 = A76,
+        ayuda3 = A75,
+        respuesta_P1 = lambda f, a, calc, c, d, m: f"""
+        A continuación se presenta la solución sugerida para el ejercicio:
+
+        $\\textbf{{\\small 1. Diagrama de cuerpo libre de la polea y sistema de coordenadas arbitrario:}}$
+        """,   
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"""
+        $\\textbf{{\\small 2. Sumatoria de fuerzas en Y:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0 }}$  
+        ${{\hspace{{4mm}} \\sum{{F_y}} = f_r - W*sen(\\alpha_1) = 0}}$ 
+        ${{\hspace{{4mm}} f_r = W*sen(\\alpha_1)}}$ 
+        ${{\hspace{{4mm}} F = {f[0]*calc['sin1']:.2f}}} N$ 
+        """,
+        respuesta_P3 = lambda f, a, calc, c, d, m: f"",
+        calculos='operations'
+        ),  
+    
+    Questionary(#5_1
+        code = 14151,
+        no_pregunta = 5,
+        complexity = F,
+        topic = EQ,
+        subtopic = E2D,
+        version = 1,
+        pregunta = lambda f, a, calc, c, d, m: f"Considere una partícula sobre la que actúan las fuerzas $F_1=[({c[0]:.0f}) i + ({c[1]:.0f}) j] N$ y $F_2=[({c[2]:.0f}) i + ({c[3]:.0f}) j] N$. Determine el vector cartesiano de la fuerza que debe aplicarse para que la partícula esté en equilibrio.",
+        no_answers = 2,
+        a1_name = Ci,
+        a2_name = Cj,
+        a3_name = "",
+        answer1=lambda f, a, calc, c, d, m: np.round(-(c[0]+c[2]),2),
+        answer2=lambda f, a, calc, c, d, m: np.round(-(c[1]+c[3]),2),
+        answer3=lambda f, a, calc, c, d, m: 0,
+        ayuda1 = A71,
+        ayuda2 = A77,
+        ayuda3 = "",
+        respuesta_P1 = lambda f, a, calc, c, d, m:f"""
+        A continuación se presenta la solución sugerida para el ejercicio:
+
+        $\\textbf{{\\small 1. Sumatoria de fuerzas en X:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_x}} = 0}}$
+        ${{\hspace{{4mm}} \\sum{{F_x}} = F1_x + F2_x + F3_x}}$
+        ${{\hspace{{4mm}} F3_x = -F1_x - F2_x }}$
+        ${{\hspace{{4mm}} F3_x = {-(c[0]+c[2]):.2f}}} \\text{{N}}$  
+       
+        $\\textbf{{\\small 2. Sumatoria de fuerzas en Y:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0}}$
+        ${{\hspace{{4mm}} \\sum{{F_y}} = F1_y + F2_y + F3_y}}$
+        ${{\hspace{{4mm}} F3_y = -F1_y - F2_y }}$
+        ${{\hspace{{4mm}} F3_x = {-(c[1]+c[3]):.2f}}} \\text{{N}}$
+
+        De acuerdo con lo anterior, el vector cartesiano de la fuerza que debe aplicar es ({-(c[0]+c[2]):.2f} i + {-(c[1]+c[3]):.2f} j) N.
+        """, 
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"",
+        respuesta_P3 = lambda f, a, calc, c, d, m: f"",    
+        calculos='operations'
+        ),
+    
+    #=================================================EQUILIBRIO DE PARTÍCULAS===================================================
+    #-------------------------------------------------     Equilibrio 2D      ---------------------------------------------------
+    #-------------------------------------------------       Nivel medio      ---------------------------------------------------
+    #-------------------------------------------------       Code: 142##      ---------------------------------------------------
+
+Questionary(#1_1
+        code = 14211,
+        no_pregunta = 1,
+        complexity = M,
+        topic = EQ,
+        subtopic = E2D,
+        version = 1,
+        pregunta = lambda f, a, calc, c, d, m: f"Considere una partícula sobre la que actúan las fuerzas $F_1=[({c[0]:.0f}) i + ({c[1]:.0f}) j] N$ y $F_2=[({c[2]:.0f}) i + ({c[3]:.0f}) j] N$. Determine el vector cartesiano de la fuerza que debe aplicarse para que la partícula esté en equilibrio.",
+        no_answers = 2,
+        a1_name = Ci,
+        a2_name = Cj,
+        a3_name = "",
+        answer1=lambda f, a, calc, c, d, m: np.round(-(c[0]+c[2]),2),
+        answer2=lambda f, a, calc, c, d, m: np.round(-(c[1]+c[3]),2),
+        answer3=lambda f, a, calc, c, d, m: 0,
+        ayuda1 = A71,
+        ayuda2 = A77,
+        ayuda3 = "",
+        respuesta_P1 = lambda f, a, calc, c, d, m:f"""
+        A continuación se presenta la solución sugerida para el ejercicio:
+
+        $\\textbf{{\\small 1. Sumatoria de fuerzas en X:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_x}} = 0}}$
+        ${{\hspace{{4mm}} \\sum{{F_x}} = F1_x + F2_x + F3_x}}$
+        ${{\hspace{{4mm}} F3_x = -F1_x - F2_x }}$
+        ${{\hspace{{4mm}} F3_x = {-(c[0]+c[2]):.2f}}} \\text{{N}}$  
+       
+        $\\textbf{{\\small 2. Sumatoria de fuerzas en Y:}}$
+
+        ${{\hspace{{4mm}} \\sum{{F_y}} = 0}}$
+        ${{\hspace{{4mm}} \\sum{{F_y}} = F1_y + F2_y + F3_y}}$
+        ${{\hspace{{4mm}} F3_y = -F1_y - F2_y }}$
+        ${{\hspace{{4mm}} F3_x = {-(c[1]+c[3]):.2f}}} \\text{{N}}$
+
+        De acuerdo con lo anterior, el vector cartesiano de la fuerza que debe aplicar es ({-(c[0]+c[2]):.2f} i + {-(c[1]+c[3]):.2f} j) N.
+        """, 
+        respuesta_P2 = lambda f, a, calc, c, d, m: f"",
+        respuesta_P3 = lambda f, a, calc, c, d, m: f"",    
+        calculos='operations'
+        ),
 
 ]

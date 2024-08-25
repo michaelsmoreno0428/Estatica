@@ -160,6 +160,17 @@ A67 = "Plantee la ecuación de cada una de las componentes de la fuerza como la 
 A68 = "¿Qué representa la longitud de la cuerda?"
 A69 = "Despeje de cada una de las ecuaciones las distancias en X, Y y Z, según corresponda."
 
+#EQ_V2D_F
+A70 = "Para garantizar la condición de equilibrio de una partícula, la sumatoria de las fuerzas en cada uno de los ejes debe ser igual a cero."
+A71 = "Plantee las ecuaciones de equilibrio correspondientes a la sumatoria de fuerzas en X y Y."
+A72 = "Para facilitar el despeje de las magnitudes, intente formar una tangente de uno de los ángulos, lo cual reducirá el número de términos en el proceso de despeje."
+A73 = "Realice el diagrama de cuerpo libre (DCL) de la polea."
+A74 = "Realice un corte en las cuerdas que sostiene la polea."
+A75 = "Plantee las ecuaciones de equilibrio y resuelva."
+A76 = "Realice el diagrama de cuerpo libre (DCL) de la polea."
+A77 = "Incluya dentro de la sumatoria las componentes de la fuerza que se debe aplicar y resuelva."
+
+
 #------------------------------------- Textos para las respuestas ---------------------------------------
 
 #EQ_V2D_D
