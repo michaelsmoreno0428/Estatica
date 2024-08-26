@@ -45,8 +45,8 @@ A3 = '''
  El ángulo con respecto al eje Y $(\\alpha_y)$ se calcula en función del ángulo con respecto al eje X $(\\alpha_x)$:
  - Primer cuadrante: $\\alpha_y = 90 - \\alpha_x$
  - Segundo cuadrante: $\\alpha_y = \\alpha_x - 90$
- - Tercer cuadrante: $\\alpha_y = 270 - \\alpha_x$
- - Cuarto cuadrante: $\\alpha_y = \\alpha_x - 270$
+ - Tercer cuadrante: $\\alpha_y = \\alpha_x - 90$
+ - Cuarto cuadrante: $\\alpha_y = \\alpha_x - 90$
  '''
 A4 = "La componente de un vector a lo largo del eje X es la proyección del vector sobre el eje."
 A5 = "La proyección del vector sobre el eje depende de la magnitud del vector y del ángulo entre el vector y el eje."
@@ -240,7 +240,7 @@ def rta_EQ_V2D_F_P4(ax, ay, bx, by):
 
     $\\textbf{{\\small 2. Cálculo de la magnitud:}}$
         
-    ${{\hspace{{4mm}} m = \\sqrt{{dx^2+dy^2}} = {math.sqrt((by-ay)**2+(bx-ax)**2):.2f}}}$
+    ${{\hspace{{4mm}} |\\overrightarrow{{F1}}| = \\sqrt{{dx^2+dy^2}} = {math.sqrt((by-ay)**2+(bx-ax)**2):.2f}}}$
 
     Este resultado implica que el vector cartesiano de F1 es: $\\overrightarrow{{F1}} = ({bx-ax})i + ({by-ay})$ j.
     """
@@ -262,11 +262,11 @@ def rta_EQ_V2D_M_P1(F1x, F1y, F2x, F2y, calc, a1,a2):
        
     $\\textbf{{\\small 3. Cálculo de la magnitud:}}$
 
-    ${{\hspace{{4mm}} |F_R|=\\sqrt{{F_{{RX}}^2+F_{{RY}}^2}} = {Calculations.magnitude(F1x*calc[f'cos{a1}']+F2x*calc[f'cos{a2}'],F1y*calc[f'sin{a1}']+F2y*calc[f'sin{a2}']):.2f} }}$
+    ${{\hspace{{4mm}} |F_R|=\\sqrt{{F_{{RX}}^2+F_{{RY}}^2}} = {Calculations.magnitude(F1x*calc[f'cos{a1}']+F2x*calc[f'cos{a2}'],F1y*calc[f'sin{a1}']+F2y*calc[f'sin{a2}']):.2f} \\text{{ kN}}}}$
 
     $\\textbf{{\\small 4. Cálculo de la dirección:}}$
 
-    ${{\hspace{{4mm}} \\alpha_R ={Calculations.define_angle(F1x*calc[f'cos{a1}']+F2x*calc[f'cos{a2}'],F1y*calc[f'sin{a1}']+F2y*calc[f'sin{a2}']):.2f} }}$
+    ${{\hspace{{4mm}} \\alpha_R ={Calculations.define_angle(F1x*calc[f'cos{a1}']+F2x*calc[f'cos{a2}'],F1y*calc[f'sin{a1}']+F2y*calc[f'sin{a2}']):.2f}° }}$
 
     El cálculo del ángulo respecto al eje x positivo depende del cuadrante en el que se encuentra el vector:
 

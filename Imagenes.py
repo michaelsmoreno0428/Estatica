@@ -2,22 +2,22 @@
 image_paths=[]
 image_paths= [
 #Vectores 2D _ Cálculo de los ángulos _ Nivel fácil
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0a.png", #[0] Pregunta < 2 _ 0 <alpha_x <= 90
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0b.png", #[1] Pregunta < 2 _ 90 <alpha_x <= 180
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0c.png", #[2] Pregunta < 2 _ 180 <alpha_x <= 270
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0d.png", #[3] Pregunta < 2 _ 270 <alpha_x <= 360
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0a.png", #[0] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0b.png", #[1]
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0c.png", #[2] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Fvec_0d.png", #[3] 
 
 #Vectores 2D _ Distancia Pendiente _ Nivel fácil
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0a.png", #[4] Pregunta < 4 _ x1p < x2p and y1p < y2p
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0b.png", #[5] Pregunta < 4 _ x1p > x2p and y1p > y2p
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0c.png", #[6] Pregunta < 4 _ x1p > x2p and y1p < y2p
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0d.png", #[7] Pregunta < 4 _ x1p < x2p and y1p > y2p
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0a.png", #[4] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0b.png", #[5] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0c.png", #[6] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/Lvec_0d.png", #[7] 
 
 #Vectores 2D _ Vector resultante _ Nivel medio
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1a.png", #[8] Pregunta 1 _ Versión 1 _ Nivel medio
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1b.png", #[9] Pregunta 1 _ Versión 2 _ Nivel medio
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1c.png", #[10] Pregunta 1 _ Versión 3 _ Nivel medio
-"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1d.png", #[11] Pregunta 1 _ Versión 4 _ Nivel medio
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1a.png", #[8] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1b.png", #[9] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1c.png", #[10] 
+"C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_1d.png", #[11] 
 
 #Vectores 2D _ Vector resultante _ Nivel medio
 "C:/Users/Luisa/Videos/Estatica/Imagenes/Preguntas/EQ/V2D/EQ_V2_M_2a.png", #[12] Pregunta 2 _ Versión 1 _ Nivel medio

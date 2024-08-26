@@ -15,11 +15,13 @@ st.set_page_config(layout="wide") #centered
 
 col_1, col_2, col_3 = st.columns(3)
 
+#Read credentials of users and create a dictionary
 datos_usuarios = pd.read_excel("C:/Users/Luisa/Videos/Estatica/Usuarios.xlsx")
 datos_usuarios["username"] = datos_usuarios["username"].astype(str)
 datos_usuarios["password"] = datos_usuarios["password"].astype(str)
 users_credentials = pd.Series(datos_usuarios.password.values, index=datos_usuarios.username).to_dict()
 
+#Function to verify credentials
 def creds_entered():
     username = st.session_state["user"].strip()
     password = st.session_state["passwd"].strip()
@@ -28,11 +30,11 @@ def creds_entered():
     if username in users_credentials and users_credentials[username] == password:
         st.session_state["authenticated"] = True
         st.success("Inicio de sesión exitoso")
-        #st.rerun()
+        st.rerun()
     else:
         st.error("Usuario o contraseña incorrectos")
     
-    
+#Function to generate a form to verify user    
 def authenticate_user():
     with col_2:
         if "authenticated" not in st.session_state:
@@ -66,7 +68,7 @@ def authenticate_user():
             """,unsafe_allow_html=True)
             st.text_input(label="Username:", value="", key="user")
             st.text_input(label="Password:", value="", key="passwd", type="password")
-            if st.button("Login"):
+            if st.button("Iniciar sesión"):
                 creds_entered()
         else:
             if st.session_state["authenticated"]:
@@ -106,7 +108,7 @@ def authenticate_user():
                     creds_entered()
                 return False
         
-           
+#Display web page when the user is authenticated           
 if authenticate_user():
 
     #Creation of the sidebar
@@ -260,11 +262,11 @@ if authenticate_user():
                         if version_no == 1:
                             st.image(image_paths[8],width=250)
                         elif version_no == 2:
-                            st.image(image_paths[9])
+                            st.image(image_paths[9],width=250)
                         elif version_no == 3:
-                            st.image(image_paths[10])
+                            st.image(image_paths[10],width=250)
                         elif version_no == 4:
-                            st.image(image_paths[11])
+                            st.image(image_paths[11],width=250)
                     
                     if pregunta_no == 2:
                         if version_no == 1:
@@ -427,7 +429,6 @@ if authenticate_user():
             st.write(outputx)
             if is_correct == 1:
                 st.session_state.mostrar_respuesta = True
-                mostrar_respuesta()
             elif is_correct == 0:
                 #st.write(f"Intentos: {st.session_state.Intento}") #Display the number of Attempts
                 if st.session_state.Intento >3:
