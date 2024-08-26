@@ -28,7 +28,7 @@ def creds_entered():
     if username in users_credentials and users_credentials[username] == password:
         st.session_state["authenticated"] = True
         st.success("Inicio de sesión exitoso")
-        st.rerun()
+        #st.rerun()
     else:
         st.error("Usuario o contraseña incorrectos")
     
