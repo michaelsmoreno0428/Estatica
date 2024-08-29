@@ -16,7 +16,7 @@ st.set_page_config(layout="wide") #centered
 col_1, col_2, col_3 = st.columns(3)
 
 #Read credentials of users and create a dictionary
-datos_usuarios = pd.read_excel("C:/Users/Luisa/Videos/Estatica/Usuarios.xlsx")
+datos_usuarios = pd.read_excel("./Usuarios.xlsx")
 datos_usuarios["username"] = datos_usuarios["username"].astype(str)
 datos_usuarios["password"] = datos_usuarios["password"].astype(str)
 users_credentials = pd.Series(datos_usuarios.password.values, index=datos_usuarios.username).to_dict()
