@@ -120,12 +120,12 @@ image_paths= [
 
 rtas_paths= [
 #Vectores 2D _ Ejes arbitrarios _ Nivel díficil
-"D:/Estática/App/Respuestas/EQ/V2D/R_EQ_V2D_D_1a.png", #[0] Pregunta 1 _ Versión 1 _ Nivel díficil
-"D:/Estática/App/Respuestas/EQ/V2D/R_EQ_V2D_D_1b.png", #[1] Pregunta 1 _ Versión 2 _ Nivel díficil
-"D:/Estática/App/Respuestas/EQ/V2D/R_EQ_V2D_D_1c.png", #[2] Pregunta 1 _ Versión 3 _ Nivel díficil
-"D:/Estática/App/Respuestas/EQ/V2D/R_EQ_V2D_D_1d.png", #[3] Pregunta 1 _ Versión 4 _ Nivel díficil
+"./Respuestas/EQ/V2D/R_EQ_V2D_D_1a.png", #[0] Pregunta 1 _ Versión 1 _ Nivel díficil
+"./Respuestas/EQ/V2D/R_EQ_V2D_D_1b.png", #[1] Pregunta 1 _ Versión 2 _ Nivel díficil
+"./Respuestas/EQ/V2D/R_EQ_V2D_D_1c.png", #[2] Pregunta 1 _ Versión 3 _ Nivel díficil
+".Respuestas/EQ/V2D/R_EQ_V2D_D_1d.png", #[3] Pregunta 1 _ Versión 4 _ Nivel díficil
 
 #Vectores 2D _ Ejes arbitrarios _ Nivel díficil
-"D:/Estática/App/Respuestas/EQ/V2D/R_EQ_V2D_D_2a.png", #[4] Pregunta 3 _ Versión 1 _ Nivel díficil
-"D:/Estática/App/Respuestas/EQ/V2D/R_EQ_V2D_D_2b.png", #[5] Pregunta 3 _ Versión 2 _ Nivel díficil
+"./Respuestas/EQ/V2D/R_EQ_V2D_D_2a.png", #[4] Pregunta 3 _ Versión 1 _ Nivel díficil
+"./Respuestas/EQ/V2D/R_EQ_V2D_D_2b.png", #[5] Pregunta 3 _ Versión 2 _ Nivel díficil
 ]
