@@ -129,3 +129,4 @@ rtas_paths= [
 "./Respuestas/EQ/V2D/R_EQ_V2D_D_2a.png", #[4] Pregunta 3 _ Versión 1 _ Nivel díficil
 "./Respuestas/EQ/V2D/R_EQ_V2D_D_2b.png", #[5] Pregunta 3 _ Versión 2 _ Nivel díficil
 ]
+
